@@ -12,5 +12,6 @@ public class LocationStatus {
 	private String state;
 	private String country;
 	private Integer latestTotal;
+	private Integer differenceFromThePreviousDay;
 	
 }

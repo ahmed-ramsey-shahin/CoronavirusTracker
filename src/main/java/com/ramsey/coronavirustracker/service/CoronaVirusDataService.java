@@ -43,14 +43,25 @@ public class CoronaVirusDataService {
 		
 		for(CSVRecord record : records) {
 			
+			String state = record.get(0);
+			String country = record.get(1);
+			int latestTotal = Integer.parseInt(record.get(record.size() - 1));
+			int differenceFromThePreviousDay = Math.abs(Integer.parseInt(record.get(record.size() - 2)) - latestTotal);
 			LocationStatus status = new LocationStatus(
-					record.get(0),
-					record.get(1),
-					Integer.parseInt(record.get(record.size() - 1))
+					state,
+					country,
+					latestTotal,
+					differenceFromThePreviousDay
 			);
 			statuses.add(status);
 			
 		}
+		
+	}
+	
+	public List<LocationStatus> getStatuses() {
+		
+		return statuses;
 		
 	}
 	
